@@ -1,0 +1,7 @@
+name = "nextjs-graphql-tailwind-boilerplate"
+
+compatibility_flags = ["nodejs_compat"]
+
+[[kv_namespaces]]
+binding = "MY_KV"
+id = "<YOUR_KV_NAMESPACE_ID>"
