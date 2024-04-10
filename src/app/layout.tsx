@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
+import { UserProvider } from "@auth0/nextjs-auth0/client";
 
-const inter = Inter({ subsets: ["latin"] });
+import "./globals.css";
+import Link from "next/link";
 
 export const metadata: Metadata = {
 	title: "Create Next App",
@@ -16,7 +16,26 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={inter.className}>{children}</body>
+			<UserProvider>
+				<body>
+					<header className="w-screen ">
+						<nav className="flex justify-center gap-5">
+							<Link className="text-slate-400 hover:text-slate-300" href={"/"}>
+								Home
+							</Link>
+							<Link className="text-slate-400 hover:text-slate-300" href={"/youtrack"}>
+								Youtrack
+							</Link>
+							<Link className="text-slate-400 hover:text-slate-300" href={"/asana"}>
+								Asana
+							</Link>
+							<a href="/api/auth/login">Login</a>
+						</nav>
+					</header>
+
+					{children}
+				</body>
+			</UserProvider>
 		</html>
 	);
 }
